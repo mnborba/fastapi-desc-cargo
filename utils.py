@@ -39,17 +39,17 @@ def common_verificacao_api_token(api_token: int):
         raise HTTPException(status_code=401, detail="API Token inválido")
 
 
-def executar_prompt(tema: str):
+def executar_prompt(cargo: str):
     """
-    Gera uma história curta sobre um tema específico utilizando a API Groq.
+    Gera uma descrição de cargo, com as atividades a serem realizadas, por cada cargo.
 
     Args:
-        tema (str): O tema sobre o qual a história será escrita.
+        cargo (str): O cargo sobre o qual a descrição será escrita.
 
     Returns:
-        str: A história gerada pela API Groq.
+        str: A descrição do cargo API Groq.
     """
-    prompt = f"Escreva uma historia sobre {tema}, em no máximo 5 linhas."
+    prompt = f"Cria uma descrição das principais atividades desempenhadas por um funcionário na função {cargo}. Seja breve retornando no máximo 5 tópicos de uma linha."
 
     client = Groq(
         api_key=os.getenv("GROQ_API_KEY"),

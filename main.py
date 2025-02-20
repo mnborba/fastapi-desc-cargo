@@ -4,11 +4,10 @@ from routers import llm_router
 
 
 descricao = """
-    API desenvolvida durante a aula 2, com exemplos de soma.
+    API desenvolvida como apresentação de trabalho da disciplina Pós UFG.
 
     # Rotas definidas
-    - /teste: retorna uma mensagem de sucesso
-    - /soma/numero1/numero2:  recebe dois números e retorna a soma
+    - /llm: retorna uma mensagem de sucesso
 """
 
 

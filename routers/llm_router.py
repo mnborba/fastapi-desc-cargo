@@ -8,14 +8,14 @@ router = APIRouter()
 
 
 @router.post(
-    "/gerar_historia",
-    summary="Gera uma história baseada no tema fornecido por parâmetro",
-    description="Gera uma história curta sobre um tema específico utilizando a API Groq",
+    "/gerar_descricao",
+    summary="Gera uma descrição de cargo, com as atividades a serem realizadas, por cada cargo",
+    description="Gera esta descrição curta utilizando a API Groq",
 )
-def gerar_historia(tema: str):
-    logger.info(f"Tema informado: {tema}")
+def gerar_descricao(cargo: str):
+    logger.info(f"Cargo informado: {cargo}")
 
-    historia = executar_prompt(tema)
-    logger.info(f"História gerada: {historia}")
+    descricao_cargo = executar_prompt(cargo)
+    logger.info(f"Descrição gerada: {descricao_cargo}")
 
-    return {"Historia": historia}
+    return {"Descrição do Cargo": descricao_cargo}

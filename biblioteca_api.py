@@ -45,38 +45,6 @@ class APIClient:
         )
         return response.json()
 
-    def teste(self):
-        """Retorna uma mensagem de teste."""
-        return self._get("/operacoes/teste")["mensagem"]
-
-    def soma(self, numero1: int, numero2: int):
-        """Realiza a soma de dois números informados na URL."""
-        return self._post(f"/operacoes/soma/{numero1}/{numero2}")
-
-    def soma2(self, numero1: int, numero2: int):
-        """Realiza a soma de dois números informados como query params."""
-        return self._post(
-            "/operacoes/soma2", params={"numero1": numero1, "numero2": numero2}
-        )
-
-    def soma3(self, numero1: int, numero2: int):
-        """Realiza a soma de dois números enviados no corpo da requisição."""
-        return self._post(
-            "/operacoes/soma3", json_body={"numero1": numero1, "numero2": numero2}
-        )["resultado"]
-
-    def divisao(self, numero1: int, numero2: int):
-        """Realiza a divisão de dois números informados na URL."""
-        return self._post(f"/operacoes/divisao/{numero1}/{numero2}")
-
-    def operacao(self, operacao: str, numero1: int, numero2: int):
-        """Realiza uma operação matemática específica."""
-        return self._post(
-            "/operacoes/operacao",
-            params={"operacao": operacao},
-            json_body={"numero1": numero1, "numero2": numero2},
-        )
-
-    def gerar_historia(self, tema: str):
-        """Gera uma história baseada no tema fornecido."""
-        return self._post("/llm/gerar_historia", params={"tema": tema})
+    def gerar_descricao(self, cargo: str):
+        """Gera uma descrição de atividades para um determinado cargo."""
+        return self._post("/llm/gerar_descricao", params={"cargo": cargo})
