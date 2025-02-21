@@ -1,0 +1,3 @@
+# Perfil do Cargo: Analista de Infraestrutura
+
+Os dois tipos de perfis predominantes adequados ao Analista de Infraestrutura, segundo o método DISC, são os perfis "C" (Conformidade) e "S" (Estabilidade). O perfil "C" é caracterizado pela atenção aos detalhes, precisão e organização, essenciais para garantir a segurança e a eficiência nos sistemas de infraestrutura. Já o perfil "S" é conhecido pela colaboração, paciência e foco em resultados sustentáveis, o que favorece o trabalho em equipe e a manutenção de um ambiente estável e confiável. Juntos, esses perfis contribuem para um desempenho robusto na área de infraestrutura.

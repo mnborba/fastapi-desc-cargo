@@ -42,7 +42,7 @@ def common_verificacao_api_token(api_token: int):
 
 def executar_prompt_cargo(cargo: str):
     """
-    Gera uma descrição de cargo, com as atividades a serem realizadas, por cada cargo.
+    Gera uma descrição de cargo, com as atividades a serem realizadas pelo cargo.
 
     Args:
         cargo (str): O cargo sobre o qual a descrição será escrita.
@@ -50,10 +50,8 @@ def executar_prompt_cargo(cargo: str):
     Returns:
         str: A descrição do cargo API Groq.
     """
-    prompt = f"O método DISC é uma metodologia comportamental que ajuda gestores a tomarem decisões \
-    estratégicas com base no perfil comportamental do time.  \
-    Com base neste método, retorne em um parágrafo de até 5 linhas, qual os dois tipos de perfis \
-    predominantes são adequados ao {cargo}?"
+    prompt = f"Cria uma descrição das principais atividades desempenhadas por um funcionário na função {cargo}. \
+    Seja breve retornando no máximo 5 tópicos de uma linha."
 
     client = Groq(
         api_key=os.getenv("GROQ_API_KEY"),

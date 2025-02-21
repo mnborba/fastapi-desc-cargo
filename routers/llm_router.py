@@ -11,19 +11,43 @@ router = APIRouter()
     "/gerar_descricao",
     summary="Gera uma descrição de cargo, com as atividades a serem realizadas, por cada cargo - LLM Groq",
     description="Gera esta descrição curta utilizando a API Groq",
+    tags=["Descrição de Cargo"],
 )
 def gerar_descricao(cargo: str):
     logger.info(f"Cargo informado: {cargo}")
 
     descricao_cargo = executar_prompt_cargo(cargo)
     logger.info(f"Descrição gerada: {descricao_cargo}")
+     
 
     return {"Descrição do Cargo": descricao_cargo}
+
+
+@router.post(
+    "/gerar_descricao/v2",
+    summary="Gera uma descrição de cargo, com as atividades a serem realizadas, por cada cargo - LLM Groq",
+    description="Gera esta descrição curta utilizando a API Groq e salva em um arquivo markdown em /files_descricao_cargo",
+    tags=["Descrição de Cargo"],
+)
+def gerar_descricao(cargo: str):
+    logger.info(f"Cargo informado: {cargo}")
+
+    descricao_cargo = executar_prompt_cargo(cargo)
+    logger.info(f"Descrição gerada: {descricao_cargo}")
+    
+    # Create a markdown file with the profile description
+    file_path = f"./files_descricao_cargo/perfil_{cargo}.md"
+    with open(file_path, "w") as file:
+        file.write(f"# Perfil do Cargo: {cargo}\n\n{descricao_cargo}")    
+
+    return {"Descrição do Cargo": descricao_cargo}, {"file_path": file_path}
+
 
 @router.post(
     "/gerar_perfil",
     summary="Gera o perfil comportamental indicado para um determinado cargo - LLM OpenAI 4o-mini",
     description="Gera o perfil utilizando a API da OpenAI",
+    tags=["Perfil Comportamental"],
 )
 def gerar_perfil(cargo: str):
     logger.info(f"Cargo informado: {cargo}")
@@ -33,10 +57,12 @@ def gerar_perfil(cargo: str):
 
     return {"Perfil do Cargo": perfil_cargo}
 
+
 @router.post(
     "/gerar_perfil/v2",
     summary="Gera o perfil comportamental indicado para um determinado cargo, em um arquivo markdown - LLM OpenAI 4o-mini",
-    description="Gera o perfil utilizando a API da OpenAI e salva em um arquivo markdown",
+    description="Gera o perfil utilizando a API da OpenAI e salva em um arquivo markdown em /files_perfil_disc",
+    tags=["Perfil Comportamental"],
 )
 def gerar_perfil_v2(cargo: str):
     logger.info(f"Cargo informado: {cargo}")
@@ -45,7 +71,7 @@ def gerar_perfil_v2(cargo: str):
     logger.info(f"Perfil gerado: {perfil_cargo}")
 
     # Create a markdown file with the profile description
-    file_path = f"./perfil_{cargo}.md"
+    file_path = f"./files_perfil_disc/perfil_{cargo}.md"
     with open(file_path, "w") as file:
         file.write(f"# Perfil do Cargo: {cargo}\n\n{perfil_cargo}")
 

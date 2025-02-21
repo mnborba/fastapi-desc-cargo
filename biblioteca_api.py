@@ -3,29 +3,22 @@ import requests
 
 class APIClient:
     """
-    Classe APIClient para interagir com uma API RESTful.
+    APIClient é uma classe para interagir com uma API RESTful.
+
     Métodos:
         __init__(base_url: str, api_token: int):
-            Inicializa a classe com a URL base da API e o token de autenticação.
+            Inicializa a instância do cliente API com a URL base e o token da API.
+
         _get(endpoint: str, params: dict = None):
-            Método privado para realizar requisições GET.
+            Método privado para realizar requisições GET à API.
+
         _post(endpoint: str, params: dict = None, json_body: dict = None):
-            Método privado para realizar requisições POST.
-        teste():
-            Retorna uma mensagem de teste.
-        soma(numero1: int, numero2: int):
-            Realiza a soma de dois números informados na URL.
-        soma2(numero1: int, numero2: int):
-            Realiza a soma de dois números informados como query params.
-        soma3(numero1: int, numero2: int):
-            Realiza a soma de dois números enviados no corpo da requisição.
-        divisao(numero1: int, numero2: int):
-            Realiza a divisão de dois números informados na URL.
-        operacao(operacao: str, numero1: int, numero2: int):
-            Realiza uma operação matemática específica.
-        gerar_historia(tema: str):
-            Gera uma história baseada no tema fornecido.
+            Método privado para realizar requisições POST à API.
+
+        gerar_descricao(cargo: str):
+            Gera uma descrição de atividades para um determinado cargo.
     """
+
 
     def __init__(self, base_url: str, api_token: int):
         self.base_url = base_url.rstrip("/")
@@ -46,5 +39,13 @@ class APIClient:
         return response.json()
 
     def gerar_descricao(self, cargo: str):
+        """Gera uma descrição de atividades para um determinado cargo."""
+        return self._post("/llm/gerar_descricao", params={"cargo": cargo})
+
+    def gerar_perfil(self, cargo: str):
+        """Gera uma descrição de atividades para um determinado cargo."""
+        return self._post("/llm/gerar_descricao", params={"cargo": cargo})
+    
+    def gerar_perfil_v2(self, cargo: str):
         """Gera uma descrição de atividades para um determinado cargo."""
         return self._post("/llm/gerar_descricao", params={"cargo": cargo})
