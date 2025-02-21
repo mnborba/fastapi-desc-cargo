@@ -19,7 +19,6 @@ class APIClient:
             Gera uma descrição de atividades para um determinado cargo.
     """
 
-
     def __init__(self, base_url: str, api_token: int):
         self.base_url = base_url.rstrip("/")
         self.api_token = api_token
@@ -45,7 +44,7 @@ class APIClient:
     def gerar_perfil(self, cargo: str):
         """Gera uma descrição de atividades para um determinado cargo."""
         return self._post("/llm/gerar_descricao", params={"cargo": cargo})
-    
+
     def gerar_perfil_v2(self, cargo: str):
         """Gera uma descrição de atividades para um determinado cargo."""
         return self._post("/llm/gerar_descricao", params={"cargo": cargo})

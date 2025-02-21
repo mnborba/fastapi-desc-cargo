@@ -3,26 +3,26 @@
 # 🚀 **Orientações para executar a API**
 
 ## 🔧 **Requisitos**
-- **Python**: Versão recomendada **>= 3.10**  
-- **Gerenciador de Pacotes**: `pip` instalado  
+- **Python**: Versão recomendada **>= 3.10**
+- **Gerenciador de Pacotes**: `pip` instalado
 
 ## 🏗️ **Configuração do Ambiente**
 ### 📌 **Criar um ambiente virtual**
-- **Windows**:  
+- **Windows**:
   ```sh
   python -m venv .venv
   ```
-- **Mac/Linux**:  
+- **Mac/Linux**:
   ```sh
   python3 -m venv .venv
   ```
 
 ### ✅ **Ativar o ambiente virtual**
-- **Windows**:  
+- **Windows**:
   ```sh
   .\.venv\Scripts\activate
   ```
-- **Mac/Linux**:  
+- **Mac/Linux**:
   ```sh
   source .venv/bin/activate
   ```

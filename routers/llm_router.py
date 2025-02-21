@@ -1,5 +1,9 @@
 from fastapi import APIRouter
-from utils import obter_logger_e_configuracao, executar_prompt_cargo, executar_prompt_perfil
+from utils import (
+    obter_logger_e_configuracao,
+    executar_prompt_cargo,
+    executar_prompt_perfil,
+)
 
 
 logger = obter_logger_e_configuracao()
@@ -18,7 +22,6 @@ def gerar_descricao(cargo: str):
 
     descricao_cargo = executar_prompt_cargo(cargo)
     logger.info(f"Descrição gerada: {descricao_cargo}")
-     
 
     return {"Descrição do Cargo": descricao_cargo}
 
@@ -29,16 +32,16 @@ def gerar_descricao(cargo: str):
     description="Gera esta descrição curta utilizando a API Groq e salva em um arquivo markdown em /files_descricao_cargo",
     tags=["Descrição de Cargo"],
 )
-def gerar_descricao(cargo: str):
+def gerar_descricao_v2(cargo: str):
     logger.info(f"Cargo informado: {cargo}")
 
     descricao_cargo = executar_prompt_cargo(cargo)
     logger.info(f"Descrição gerada: {descricao_cargo}")
-    
+
     # Create a markdown file with the profile description
     file_path = f"./files_descricao_cargo/perfil_{cargo}.md"
     with open(file_path, "w") as file:
-        file.write(f"# Perfil do Cargo: {cargo}\n\n{descricao_cargo}")    
+        file.write(f"# Perfil do Cargo: {cargo}\n\n{descricao_cargo}")
 
     return {"Descrição do Cargo": descricao_cargo}, {"file_path": file_path}
 
@@ -75,4 +78,4 @@ def gerar_perfil_v2(cargo: str):
     with open(file_path, "w") as file:
         file.write(f"# Perfil do Cargo: {cargo}\n\n{perfil_cargo}")
 
-    return {"file_path": file_path}
+    return {"Perfil do Cargo": perfil_cargo}, {"file_path": file_path}
