@@ -15,7 +15,7 @@ descricao = """
 app = FastAPI(
     title="FastAPI-trabalho-pos-ufg",
     description=descricao,
-    version="1.0.3",
+    version="1.0.4",
     terms_of_service="http://example.com/terms/",
     contact={
         "name": "Marcelo Nunes Borba",
