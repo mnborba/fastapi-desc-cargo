@@ -7,14 +7,15 @@ descricao = """
     API desenvolvida como apresentação de trabalho da disciplina Pós UFG.
 
     # Rotas definidas
-    - /llm: retorna uma mensagem de sucesso
+    - /llm/gerar_descricao: retorna descriçao de um cargo.
+    - /llm/gerar_perfil: retorna perfil de um cargo.
 """
 
 
 app = FastAPI(
-    title="FastAPI Aula 4b",
+    title="FastAPI-trabalho-pos-ufg",
     description=descricao,
-    version="4.3",
+    version="1.0.0",
     terms_of_service="http://example.com/terms/",
     contact={
         "name": "Marcelo Nunes Borba",

@@ -3,6 +3,7 @@ from groq import Groq
 import os
 import logging
 from dotenv import load_dotenv
+import openai
 
 
 load_dotenv()
@@ -39,7 +40,7 @@ def common_verificacao_api_token(api_token: int):
         raise HTTPException(status_code=401, detail="API Token inválido")
 
 
-def executar_prompt(cargo: str):
+def executar_prompt_cargo(cargo: str):
     """
     Gera uma descrição de cargo, com as atividades a serem realizadas, por cada cargo.
 
@@ -49,7 +50,10 @@ def executar_prompt(cargo: str):
     Returns:
         str: A descrição do cargo API Groq.
     """
-    prompt = f"Cria uma descrição das principais atividades desempenhadas por um funcionário na função {cargo}. Seja breve retornando no máximo 5 tópicos de uma linha."
+    prompt = f"O método DISC é uma metodologia comportamental que ajuda gestores a tomarem decisões \
+    estratégicas com base no perfil comportamental do time.  \
+    Com base neste método, retorne em um parágrafo de até 5 linhas, qual os dois tipos de perfis \
+    predominantes são adequados ao {cargo}?"
 
     client = Groq(
         api_key=os.getenv("GROQ_API_KEY"),
@@ -66,3 +70,28 @@ def executar_prompt(cargo: str):
     )
 
     return chat_completion.choices[0].message.content
+
+
+def executar_prompt_perfil(cargo: str):
+    """
+    Gera uma descrição de cargo, com as atividades a serem realizadas, por cada cargo.
+
+    Args:
+        cargo (str): O cargo sobre o qual a descrição será escrita.
+
+    Returns:
+        str: A descrição do cargo gerada pela API OpenAI.
+    """
+    prompt = f"O método DISC é uma metodologia comportamental que ajuda gestores a tomarem decisões \
+    estratégicas com base no perfil comportamental do time.  \
+    Com base neste método, retorne em um parágrafo de até 5 linhas, qual os dois tipos de perfis \
+    predominantes são adequados ao {cargo}?"
+
+    client = openai.OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+
+    response = client.chat.completions.create(
+        model="gpt-4o-mini",  # Escolha um modelo da OpenAI
+        messages=[{"role": "user", "content": prompt}]
+    )
+
+    return response.choices[0].message.content
