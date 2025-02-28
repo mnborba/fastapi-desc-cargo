@@ -1,0 +1,3 @@
+# Perfil do Cargo: Consultor de Venda de Veículos
+
+Os perfis predominantes adequados para um Consultor de Venda de Veículos, segundo o método DISC, são o perfil "D" (Dominância) e o perfil "I" (Influencia). O perfil "D" traz características como assertividade, determinação e foco em resultados, essenciais para conduzir negociações e fechar vendas. Por outro lado, o perfil "I" é associado à sociabilidade, entusiasmo e habilidade em estabelecer relacionamentos, fatores cruciais para criar uma conexão com os clientes e impulsionar o processo de venda. A combinação desses perfis permite um consultor dinâmico e eficaz na abordagem e conversão de clientes.
